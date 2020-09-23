@@ -1,0 +1,44 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+@{
+    ViewData["Title"] = "Home Page";
+
+}
+@model IEnumerable<Article>
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome on the "Blog"!</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <p>Dashboard <a asp-controller="Dashboard" asp-action="Index"> Dashboard</a>.</p>
+    <form>
+        <p>
+            Keyword: <input type="text" asp-controller="HomeController" asp-action="SearchString" />
+            <input type="submit" value="Search" />
+            <br>
+        </p>
+    </form>
+    5 NEWEST!
+
+    @if (Model.Any())
+    {
+        <ul>
+            @foreach (var x in Model)
+            {
+
+                <li>
+                    <href =@x.Url name=@x.Title>
+                </li>
+
+            }
+        </ul>
+    }
+    else
+    {
+        <textarea>There is no aticles!</textarea>
+    }
+    
+</div>

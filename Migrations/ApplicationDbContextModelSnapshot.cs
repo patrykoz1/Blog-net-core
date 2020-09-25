@@ -105,8 +105,8 @@ namespace Blog.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "c600b5c2-ddf7-4ba3-8c1f-9d1b54ee3c47",
-                            ConcurrencyStamp = "db1ce5af-a314-4f9a-a22e-fc44ea175b20",
+                            Id = "37bedef1-23b5-460d-8a88-dee644c80048",
+                            ConcurrencyStamp = "b8da5bb9-d731-4820-8d7f-3d6e6faab972",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         });

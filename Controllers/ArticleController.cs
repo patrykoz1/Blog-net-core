@@ -40,14 +40,10 @@ namespace Blog.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(ArticleVM article)
         {
-            try
-            {
-                var art = new Article() { Content = article.Content, CategoryId = article.CategoryId, Title = article.Title };
-                _applicationDbContext.Articles.Add(art);
-            }
-            catch (Exception e)
-            {
-            }
+            Article art = new Article { Content = article.Content, CategoryId = article.CategoryId, Title = article.Title, Url = "Article/" + article.Title };
+            _applicationDbContext.Articles.Add(art);
+            var res =_applicationDbContext.SaveChangesAsync().Result;
+            
             return RedirectToAction("Index", "Dashboard", new { area = "" });
         }
 

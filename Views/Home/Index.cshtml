@@ -26,11 +26,11 @@
     @if (Model.Any())
     {
         <ul>
-            @foreach (var x in Model)
+            @foreach (var x in Model.OrderBy(x=>x.PublishDate).Take(5))
             {
 
                 <li>
-                    <href =@x.Url name=@x.Title>
+                    @x.Title
                 </li>
 
             }
@@ -40,5 +40,4 @@
     {
         <textarea>There is no aticles!</textarea>
     }
-    
 </div>

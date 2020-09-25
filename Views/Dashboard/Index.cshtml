@@ -36,10 +36,14 @@
 
         @using (Html.BeginForm("Create", "Article"))
         {
-            <input type="text" name="Content" /><br>
-            <input type="text" name="Title" /><br>
-            <input type="text" name="CategoryId" /><br>
-            <input type="submit" value="Click"/>
+            @*<input type="text" name="Content" /><br>
+                <input type="text" name="Title" /><br>
+                <input type="text" name="CategoryId" /><br>
+                <input type="submit" value="Click" />*@
+            @Html.TextBoxFor(x => x.Title)<br>
+            @Html.TextBoxFor(x => x.Content)<br>
+            @Html.TextBoxFor(x => x.CategoryId)<br>
+            <input type="submit" value="Click" />
 
         }
 

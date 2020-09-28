@@ -1,0 +1,28 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+@model Blog.ViewModels.ArticleVM
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";}
+
+
+    <h1>ADD ARTICLE!!</h1>
+    @if (SignInManager.IsSignedIn(User))
+    {
+        @using (Html.BeginForm("Create", "Article"))
+        {
+
+            @Html.TextBoxFor(x => x.Title, new { style = "width: 15em;" })
+            <br>
+
+            @Html.TextBoxFor(x => x.Content, new { style = "width: 30em; height:17em;" })
+            <br>
+
+            @Html.TextBoxFor(x => x.CategoryId, new { style = "width: 1em;" })
+            <br>
+            <input type="submit" value="Click" />
+
+
+        }
+    }
+   

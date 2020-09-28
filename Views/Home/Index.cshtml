@@ -25,16 +25,17 @@
 
     @if (Model.Any())
     {
-        <ul>
-            @foreach (var x in Model.OrderBy(x=>x.PublishDate).Take(5))
+        
+            @foreach (var x in Model.OrderBy(x=>x.PublishDate).Take(5).Reverse())
             {
 
-                <li>
-                    @x.Title
-                </li>
+            <ul>
+                <a asp-controller="Article" asp-action="Index" asp-route-Id=@x.Id>@x.Title</a>
+            </ul>
+            
 
             }
-        </ul>
+        
     }
     else
     {

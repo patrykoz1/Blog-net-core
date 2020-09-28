@@ -4,6 +4,7 @@ using Blog.ViewModels;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
+using System.Linq;
 
 namespace Blog.Controllers
 {
@@ -11,16 +12,19 @@ namespace Blog.Controllers
 
     {
         private ApplicationDbContext _applicationDbContext;
+        private IArticleRepository _articleRepository;
 
-        public ArticleController(ApplicationDbContext applicationDbContext)
+        public ArticleController(ApplicationDbContext applicationDbContext,IArticleRepository articleRepository)
         {
             _applicationDbContext = applicationDbContext;
+            _articleRepository = articleRepository;
         }
 
         // GET: Article
-        public ActionResult Index()
+        public ActionResult Index(int Id)
         {
-            return View();
+            Article article = _applicationDbContext.Articles.FirstOrDefault(a => a.Id == Id);
+            return View(article);
         }
 
         // GET: Article/Details/5
@@ -40,7 +44,8 @@ namespace Blog.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(ArticleVM article)
         {
-            Article art = new Article { Content = article.Content, CategoryId = article.CategoryId, Title = article.Title, Url = "Article/" + article.Title };
+            Article art = new Article { Content = article.Content, CategoryId = article.CategoryId, Title = article.Title, Url = "Article/" + article.Title,PublishDate=DateTime.Now };
+            art.Url = "Article"+art.Id;
             _applicationDbContext.Articles.Add(art);
             var res =_applicationDbContext.SaveChangesAsync().Result;
             
@@ -73,7 +78,12 @@ namespace Blog.Controllers
         // GET: Article/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            //Yeah, we can't delete only by id. We have to search record and then delete
+            //But we can use EF Plus (3rd library).
+            var art = _applicationDbContext.Articles.FirstOrDefault(x => x.Id == id);
+            _applicationDbContext.Remove(art);
+            _applicationDbContext.SaveChanges();
+            return RedirectToAction("Delete","Dashboard");
         }
 
         // POST: Article/Delete/5

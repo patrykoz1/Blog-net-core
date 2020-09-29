@@ -14,7 +14,7 @@ namespace Blog.Controllers
         private ApplicationDbContext _applicationDbContext;
         private IArticleRepository _articleRepository;
 
-        public ArticleController(ApplicationDbContext applicationDbContext,IArticleRepository articleRepository)
+        public ArticleController(ApplicationDbContext applicationDbContext, IArticleRepository articleRepository)
         {
             _applicationDbContext = applicationDbContext;
             _articleRepository = articleRepository;
@@ -44,11 +44,11 @@ namespace Blog.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(ArticleVM article)
         {
-            Article art = new Article { Content = article.Content, CategoryId = article.CategoryId, Title = article.Title, Url = "Article/" + article.Title,PublishDate=DateTime.Now };
-            art.Url = "Article"+art.Id;
+            Article art = new Article { Content = article.Content, CategoryId = article.CategoryId, Title = article.Title, Url = "Article/" + article.Title, PublishDate = DateTime.Now };
+            art.Url = "Article" + art.Id;
             _applicationDbContext.Articles.Add(art);
-            var res =_applicationDbContext.SaveChangesAsync().Result;
-            
+            var res = _applicationDbContext.SaveChangesAsync().Result;
+
             return RedirectToAction("Index", "Dashboard", new { area = "" });
         }
 
@@ -83,7 +83,7 @@ namespace Blog.Controllers
             var art = _applicationDbContext.Articles.FirstOrDefault(x => x.Id == id);
             _applicationDbContext.Remove(art);
             _applicationDbContext.SaveChanges();
-            return RedirectToAction("Delete","Dashboard");
+            return RedirectToAction("Delete", "Dashboard");
         }
 
         // POST: Article/Delete/5

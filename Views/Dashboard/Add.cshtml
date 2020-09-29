@@ -5,24 +5,32 @@
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";}
 
-
-    <h1>ADD ARTICLE!!</h1>
-    @if (SignInManager.IsSignedIn(User))
-    {
-        @using (Html.BeginForm("Create", "Article"))
-        {
-
-            @Html.TextBoxFor(x => x.Title, new { style = "width: 15em;" })
-            <br>
-
-            @Html.TextBoxFor(x => x.Content, new { style = "width: 30em; height:17em;" })
-            <br>
-
-            @Html.TextBoxFor(x => x.CategoryId, new { style = "width: 1em;" })
-            <br>
-            <input type="submit" value="Click" />
-
-
-        }
-    }
-   
+<h1>ADD ARTICLE!!</h1>
+@if (SignInManager.IsSignedIn(User))
+{
+    <div class="container">
+        <div class="row">
+            @using (Html.BeginForm("Create", "Article"))
+            {<div class="col">
+                    <div>Title</div>
+                    @Html.TextBoxFor(x => x.Title, new { style = "width: 15em;" })
+                </div>
+                <div class="w-100"></div>
+                <div class="col">
+                    <div>Content</div>
+                    @Html.TextBoxFor(x => x.Content, new { style = "width: 30em; height:17em;" })
+                    <div class="w-100"></div>
+                </div>
+                <div class="col">
+                    <div>Category Id</div>
+                    @Html.TextBoxFor(x => x.CategoryId, new { style = "width: 1em;" })
+                </div>
+                <div class="w-100"></div>
+                <br />
+                <div class="col">
+                    <input type="submit" class="btn btn-primary btn-sm" value="Click" />
+                </div>
+            }
+        </div>
+    </div>
+}

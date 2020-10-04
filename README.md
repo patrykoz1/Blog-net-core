@@ -1,6 +1,7 @@
 # Blog-net-core
 This is project of my own personal blog. "My own" means - it's developed by me and it's not copy-pasted from tutorial! It's not quite popular among juniors.
 Altough it's junior's project it can be used as a real and fully-working piece of code. With some changes I can use it as a site for small business.
+Keywords: .net core mvc,c#, tag helpers,ajax,identity framework, entityframework core
 
 
 Nice things and features:
@@ -14,9 +15,9 @@ Nice things and features:
 
 Things to fix:
 
--Editing doesn't work
+-Editing doesn't work (added)
 
 -Deleting doesn't work (EDIT: this feature has been added already)
 
--I have to spend more time on views, because views look very... poor and ugly.
+-I have to spend more time on views, because views look very... poor and ugly (partly done!)
 

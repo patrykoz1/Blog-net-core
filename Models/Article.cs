@@ -15,6 +15,8 @@ namespace Blog.Models
 
         [Required]
         public int CategoryId { get; set; }
+
         public String Url { get; set; }
+        //public SelectList ArticleList { get; set; }
     }
 }

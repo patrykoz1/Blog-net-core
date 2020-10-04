@@ -161,3 +161,4 @@ C:\Users\patryk\source\repos\Blog\obj\Debug\netcoreapp3.1\Razor\Views\Dashboard\
 C:\Users\patryk\source\repos\Blog\obj\Debug\netcoreapp3.1\Razor\Views\Dashboard\Delete.cshtml.g.cs
 C:\Users\patryk\source\repos\Blog\obj\Debug\netcoreapp3.1\Razor\Views\Dashboard\Edit.cshtml.g.cs
 C:\Users\patryk\source\repos\Blog\obj\Debug\netcoreapp3.1\Razor\Views\Article\Index.cshtml.g.cs
+C:\Users\patryk\source\repos\Blog\obj\Debug\netcoreapp3.1\Razor\Views\Dashboard\EditPartialView.cshtml.g.cs

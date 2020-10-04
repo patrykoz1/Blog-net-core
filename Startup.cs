@@ -36,9 +36,9 @@ namespace Blog
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, UserManager<IdentityUser> userManager,RoleManager<IdentityRole> roleManager)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, UserManager<IdentityUser> userManager, RoleManager<IdentityRole> roleManager)
         {
-            ApplicationDbInitializer.SeedUsers(userManager,roleManager);
+            ApplicationDbInitializer.SeedUsers(userManager, roleManager);
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -69,6 +69,11 @@ namespace Blog
                     name: "Dashboard",
                     pattern: "{controller=Dashboard}/{action=Dashboard}");
                 endpoints.MapRazorPages();
+
+                /*endpoints.MapControllerRoute(
+                    name: "EPV",
+                    pattern: "{controller=EditPartialView}/{action=_tableSeeder}/{id?}");
+                endpoints.MapRazorPages();*/
                 //added for block registration
                 endpoints.MapGet("/Identity/Account/Register", context => Task.Factory.StartNew(() => context.Response.Redirect("/Identity/Account/Login", true, true)));
                 endpoints.MapPost("/Identity/Account/Register", context => Task.Factory.StartNew(() => context.Response.Redirect("/Identity/Account/Login", true, true)));

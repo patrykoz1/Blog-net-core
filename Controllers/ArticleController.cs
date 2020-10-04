@@ -52,10 +52,17 @@ namespace Blog.Controllers
             return RedirectToAction("Index", "Dashboard", new { area = "" });
         }
 
-        // GET: Article/Edit/5
-        public ActionResult Edit(int id)
+        // POST: Article/Edit/5
+        [HttpPost]
+        public ActionResult MyEdit(int id, Article article)
         {
-            return View();
+            Article editedArt = _applicationDbContext.Articles.FirstOrDefault(x => x.Id == id);
+            editedArt.Title = article.Title;
+            editedArt.CategoryId = article.CategoryId;
+            editedArt.Content = article.Content;
+            editedArt.PublishDate = DateTime.Now;
+            _applicationDbContext.SaveChanges();
+            return RedirectToAction("Index", "Dashboard", new { area = "" });
         }
 
         // POST: Article/Edit/5

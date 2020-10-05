@@ -11,6 +11,7 @@ Nice things and features:
 -Login works ;)
 
 -Seeder is my own. It's impossible to seed database with user and role in OnModelCreating in DbContext. I was forced to make my own DbInitializer class.
+-Look at Editing Article feature - there are few well done and interesting things. I use AJAX to load article from DB, I use partial view as well - nice as a trainee!
 
 
 Things to fix:

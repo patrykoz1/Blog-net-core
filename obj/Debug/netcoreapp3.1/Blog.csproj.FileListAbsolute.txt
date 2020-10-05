@@ -157,8 +157,9 @@ C:\Users\patryk\source\repos\Blog\obj\Debug\netcoreapp3.1\Blog.csproj.CoreCompil
 C:\Users\patryk\source\repos\Blog\obj\Debug\netcoreapp3.1\Blog.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\patryk\source\repos\Blog\obj\Debug\netcoreapp3.1\Blog.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\patryk\source\repos\Blog\obj\Debug\netcoreapp3.1\Razor\Views\Dashboard\Index.cshtml.g.cs
-C:\Users\patryk\source\repos\Blog\obj\Debug\netcoreapp3.1\Razor\Views\Dashboard\Add.cshtml.g.cs
-C:\Users\patryk\source\repos\Blog\obj\Debug\netcoreapp3.1\Razor\Views\Dashboard\Delete.cshtml.g.cs
-C:\Users\patryk\source\repos\Blog\obj\Debug\netcoreapp3.1\Razor\Views\Dashboard\Edit.cshtml.g.cs
 C:\Users\patryk\source\repos\Blog\obj\Debug\netcoreapp3.1\Razor\Views\Article\Index.cshtml.g.cs
-C:\Users\patryk\source\repos\Blog\obj\Debug\netcoreapp3.1\Razor\Views\Dashboard\EditPartialView.cshtml.g.cs
+C:\Users\patryk\source\repos\Blog\obj\Debug\netcoreapp3.1\Razor\Views\Dashboard\AddArticle.cshtml.g.cs
+C:\Users\patryk\source\repos\Blog\obj\Debug\netcoreapp3.1\Razor\Views\Dashboard\AddCategory.cshtml.g.cs
+C:\Users\patryk\source\repos\Blog\obj\Debug\netcoreapp3.1\Razor\Views\Dashboard\DeleteArticle.cshtml.g.cs
+C:\Users\patryk\source\repos\Blog\obj\Debug\netcoreapp3.1\Razor\Views\Dashboard\EditArticle.cshtml.g.cs
+C:\Users\patryk\source\repos\Blog\obj\Debug\netcoreapp3.1\Razor\Views\Dashboard\EditArticlePartialView.cshtml.g.cs

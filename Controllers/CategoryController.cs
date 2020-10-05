@@ -1,10 +1,18 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Blog.Data;
+using Blog.Models;
+using Blog.ViewModels;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Blog.Controllers
 {
     public class CategoryController : Controller
     {
+        private ApplicationDbContext dbContext;
+        public CategoryController(ApplicationDbContext _dbContext)
+        {
+            this.dbContext = _dbContext;
+        }
         // GET: Category
         public ActionResult Index()
         {
@@ -18,11 +26,15 @@ namespace Blog.Controllers
         }
 
         // GET: Category/Create
-        public ActionResult Create()
+        
+        public ActionResult Create(CategoryVM catvm)
         {
-            return View();
+            Category category = new Category { Name = catvm.Name };
+            dbContext.Categories.Add(category);
+            var res = dbContext.SaveChangesAsync().Result;
+            return RedirectToAction("Index", "Dashboard", new { area = "" });
         }
-
+/*
         // POST: Category/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -39,7 +51,7 @@ namespace Blog.Controllers
                 return View();
             }
         }
-
+        */
         // GET: Category/Edit/5
         public ActionResult Edit(int id)
         {

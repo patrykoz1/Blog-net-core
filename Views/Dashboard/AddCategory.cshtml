@@ -1,0 +1,27 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+@model Blog.ViewModels.CategoryVM
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";}
+
+<h1>Add Category</h1>
+@if (SignInManager.IsSignedIn(User))
+{
+    <div class="container">
+        <div class="row">
+            @using (Html.BeginForm("Create", "Category"))
+            {<div class="col">
+                    <div>Name of category</div>
+                    @Html.TextBoxFor(x => x.Name, new { style = "width: 15em;" })
+                </div>
+                <div class="w-100"></div>
+                <br />
+                <div class="col">
+                    <input type="submit" class="btn btn-primary btn-sm" value="Create" />
+                </div>
+
+            }
+        </div>
+    </div>
+}

@@ -1,6 +1,7 @@
 # Blog-net-core
 This is project of my own personal blog. "My own" means - it's developed by me and it's not copy-pasted from tutorial! It's not quite popular among juniors.
-Altough it's junior's project it can be used as a real and fully-working piece of code. With some changes I can use it as a site for small business.
+Altough it's junior's project it can be used as a real and fully-working piece of code. With some changes I can use it as a site for small business. However - the project has few big bugs (I added them purposely). I don't want someone steal my work and code! If you are a recruter, you see this readme and code just write or call to me I will explain you everything what do you want.
+
 Keywords: .net core mvc,c#, tag helpers,ajax,identity framework, entityframework core
 
 

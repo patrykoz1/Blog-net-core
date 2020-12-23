@@ -8,10 +8,11 @@ namespace Blog.Controllers
 {
     public class CategoryController : Controller
     {
-        private ApplicationDbContext dbContext;
-        public CategoryController(ApplicationDbContext _dbContext)
-        {
-            this.dbContext = _dbContext;
+        
+        private ICategoryRepository categoryRepository;
+        public CategoryController(ICategoryRepository _categoryRepository)
+        {     
+            this.categoryRepository = _categoryRepository;
         }
         // GET: Category
         public ActionResult Index()
@@ -29,9 +30,7 @@ namespace Blog.Controllers
         
         public ActionResult Create(CategoryVM catvm)
         {
-            Category category = new Category { Name = catvm.Name };
-            dbContext.Categories.Add(category);
-            var res = dbContext.SaveChangesAsync().Result;
+            categoryRepository.AddCategory(catvm);
             return RedirectToAction("Index", "Dashboard", new { area = "" });
         }
 /*

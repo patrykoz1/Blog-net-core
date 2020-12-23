@@ -23,7 +23,8 @@ namespace Blog.Controllers
         // GET: Article
         public ActionResult Index(int Id)
         {
-            Article article = _applicationDbContext.Articles.FirstOrDefault(a => a.Id == Id);
+            //Article article = _applicationDbContext.Articles.FirstOrDefault(a => a.Id == Id);
+            Article article = _articleRepository.GetArticleById(Id);
             return View(article);
         }
 
@@ -44,10 +45,7 @@ namespace Blog.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(ArticleVM article)
         {
-            Article art = new Article { Content = article.Content, CategoryId = article.CategoryId, Title = article.Title, Url = "Article/" + article.Title, PublishDate = DateTime.Now };
-            art.Url = "Article" + art.Id;
-            _applicationDbContext.Articles.Add(art);
-            var res = _applicationDbContext.SaveChangesAsync().Result;
+            _articleRepository.AddArticle(article);
 
             return RedirectToAction("Index", "Dashboard", new { area = "" });
         }
@@ -56,12 +54,7 @@ namespace Blog.Controllers
         [HttpPost]
         public ActionResult MyEdit(int id, Article article)
         {
-            Article editedArt = _applicationDbContext.Articles.FirstOrDefault(x => x.Id == id);
-            editedArt.Title = article.Title;
-            editedArt.CategoryId = article.CategoryId;
-            editedArt.Content = article.Content;
-            editedArt.PublishDate = DateTime.Now;
-            _applicationDbContext.SaveChanges();
+            _articleRepository.EditArticle(id, article);
             return RedirectToAction("Index", "Dashboard", new { area = "" });
         }
 
@@ -85,11 +78,7 @@ namespace Blog.Controllers
         // GET: Article/Delete/5
         public ActionResult Delete(int id)
         {
-            //Yeah, we can't delete only by id. We have to search record and then delete
-            //But we can use EF Plus (3rd library).
-            var art = _applicationDbContext.Articles.FirstOrDefault(x => x.Id == id);
-            _applicationDbContext.Remove(art);
-            _applicationDbContext.SaveChanges();
+            _articleRepository.DeleteArticle(id);
             return RedirectToAction("Delete", "Dashboard");
         }
 

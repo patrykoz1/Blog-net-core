@@ -12,14 +12,15 @@ Nice things and features:
 -Login works ;)
 
 -Seeder is my own. It's impossible to seed database with user and role in OnModelCreating in DbContext. I was forced to make my own DbInitializer class.
+
 -Look at Editing Article feature - there are few well done and interesting things. I use AJAX to load article from DB, I use partial view as well - nice as a trainee!
+
+-Searcher works. Very simple (without regex or data mining!) but it's well-done piece of code!
 
 
 Things to fix:
 
--Editing doesn't work (added)
 
--Deleting doesn't work (EDIT: this feature has been added already)
 
 -I have to spend more time on views, because views look very... poor and ugly (partly done!)
 

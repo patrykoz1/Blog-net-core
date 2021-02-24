@@ -35,10 +35,11 @@ namespace Blog.Controllers
         }
 
         //returns View with searched articles
+       
         public IActionResult SearchString(String word)
         {
             var art = _articleRepository.SearchArticles(word);
-            return View(art);
+            return View("~/Views/Home/Index.cshtml", art);
         }
     }
 }

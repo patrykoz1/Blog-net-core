@@ -65,6 +65,8 @@ namespace Blog
                     pattern: "{controller=Home}/{action=Index}/{id?}");
                 endpoints.MapRazorPages();
 
+                
+
                 endpoints.MapControllerRoute(
                     name: "Dashboard",
                     pattern: "{controller=Dashboard}/{action=Dashboard}");

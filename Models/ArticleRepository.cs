@@ -1,5 +1,6 @@
 ﻿using Blog.Models;
 using Blog.ViewModels;
+using Microsoft.Extensions.Diagnostics.HealthChecks;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -55,7 +56,14 @@ namespace Blog.Data
 
         public IEnumerable<Article> SearchArticles(String word)
         {
-            return _applicationDbContext.Articles.Where(x => x.Title.Contains(word));
+            
+            var arts = from m in _applicationDbContext.Articles select m;
+            if (!String.IsNullOrEmpty(word))
+            {
+                arts = arts.Where(x => x.Content.Contains(word));
+            }
+           
+            return arts.ToList();
         }
     }
 }

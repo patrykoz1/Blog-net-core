@@ -14,14 +14,14 @@
     <h1 class="display-4">Welcome on the "Blog"!</h1>
     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
     <p>Dashboard <a asp-controller="Dashboard" asp-action="Index"> Dashboard</a>.</p>
-    <form>
+    <form asp-controller="Home"  asp-action="SearchString" method="get">
         <p>
-            Keyword: <input type="text" asp-controller="HomeController" asp-action="SearchString" />
-            <input type="submit" value="Search" />
+            Keyword: <input type="text" name="word" />
+            <input type="submit" />
             <br>
         </p>
     </form>
-    5 NEWEST!
+    5 newest or searched article!
 
     @if (Model.Any())
     {

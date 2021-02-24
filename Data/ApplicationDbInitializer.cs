@@ -49,3 +49,45 @@ namespace Blog.Data
         }
     }
 }
+
+namespace Your.Namespace
+{
+    public static class ApplicationDbInitializer
+    {
+        public static async void SeedUsers(UserManager<IdentityUser> userManager, RoleManager<IdentityRole> roleManager)
+        {
+
+         
+            if ((userManager.FindByEmailAsync("john@doe.com").Result) == null)
+            {
+                var hasher = new PasswordHasher<IdentityUser>();
+
+                IdentityUser user = new IdentityUser
+                {
+                    UserName = "name",
+                    Email = "john@doe.com",               
+                    NormalizedUserName = "name".ToUpper(),
+                    NormalizedEmail = "john@doe.com".ToUpper(),
+                    EmailConfirmed = true,
+                    SecurityStamp = string.Empty,
+
+                };
+              
+
+
+                var result = userManager.CreateAsync(user).Result;
+
+                if (result.Succeeded)
+                {
+                    await userManager.AddPasswordAsync(user, "password_here");
+                    userManager.AddToRoleAsync(user, "Admin_or_other_role_here").Wait();
+
+                }
+                else
+                {
+                    throw new ArgumentException("Something went wrong with user seeding!");
+                }
+            }
+        }
+    }
+}
